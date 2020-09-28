@@ -2,15 +2,13 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Platform, StatusBar } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './Components/HomeScreen';
-import LikesScreen from './Components/LikesScreen';
-import { NavigationContainer } from '@react-navigation/native';
 import ProfileTabScreen from './Components/ProfileTabScreen';
-import SearchTabScreen from './Components/SearchTab';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons, Entypo, AntDesign, Feather } from '@expo/vector-icons';
-import AddMediaScreen from './Components/AddMediaScreen';
+import AddMediaScreen from './Components/CreateEvent';
 import Welcome from './Components/Screens/Welcome';
 import { SafeAreaView } from 'react-navigation';
+import AllEventsScreen from './Components/AllEvents';
+import SubscribedEventsScreen from './Components/SubscribedEvents';
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
@@ -23,19 +21,19 @@ export default function Navigation() {
                         <Entypo name="home" color={color} size={size} />
                     ),
                 }} />
-                <Tab.Screen name="Search" component={SearchTabScreen} options={{
+                <Tab.Screen name="AllEvents" component={AllEventsScreen} options={{
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="search1" color={color} size={size} />
                     )
                 }}
                 />
-                <Tab.Screen name="AddMedia" component={AddMediaScreen} options={{
+                <Tab.Screen name="AddEvent" component={AddMediaScreen} options={{
                     tabBarIcon: ({ color, size }) => (
                         <Feather name="plus-square" color={color} size={size} />
                     ),
                 }}
                 />
-                <Tab.Screen name="Likes" component={LikesScreen} options={{
+                <Tab.Screen name="SubscribedEvents" component={SubscribedEventsScreen} options={{
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="hearto" color={color} size={size} />
                     ),
@@ -54,6 +52,6 @@ export default function Navigation() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     }
 })
